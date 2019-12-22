@@ -20,7 +20,7 @@ module.exports = class extends Command {
     async run(msg) {
         console.log("working!?");
         var response = await this.client.funcs.animeFetch("anime", "one-punch man", 1, 1);
-        console.log(response.Page.media[0].title);
+        console.log(response.Page.media[0].title);l
         msg.send(JSON.stringify(response.Page.media[0].title));
     }
 
