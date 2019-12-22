@@ -4,7 +4,7 @@ module.exports = class extends Command {
 
     constructor(...args) {
         super(...args, {
-            name: "animeFetch",
+            name: "animeSearch",
             enabled: true,
             runIn: ['text', 'dm'],
             cooldown: 0,
@@ -18,7 +18,10 @@ module.exports = class extends Command {
     }
 
     async run(msg, [...params]) {
-        // This is where you place the code you want to run for your command
+        console.log("working!?");
+        var response = await this.client.funcs.animeFetch("anime", "one-punch man", 1, 1);
+        console.log(response.Page.media[0].title);
+        msg.send(JSON.stringify(response.Page.media[0].title));
     }
 
 };

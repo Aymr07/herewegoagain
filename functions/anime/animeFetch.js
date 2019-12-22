@@ -86,7 +86,7 @@ module.exports = class extends Function {
             } else {
                 return `Status: ${json.errors[0].status} \nMessage: ${json.errors[0].message}`;
             }
-        }a
+        }
 
         // returning the json.data if everything passes
         return json.data;
