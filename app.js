@@ -9,5 +9,10 @@ new Client({
     prefix: '!',
     commandEditing: true,
     typing: true,
+    aliasFunctions: {
+        returnMethod: "run",
+        prefix: "funcs",
+        enabled: true
+    },
     readyMessage: (client) => `Successfully initialized. Ready to serve ${client.guilds.size} guilds.`
 }).login(config.main.token);
