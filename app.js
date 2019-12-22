@@ -1,9 +1,11 @@
-const { Client } = require('klasa');
+const {
+    Client
+} = require('klasa');
 const config = require("./config.json");
 
 new Client({
     fetchAllMembers: false,
-    prefix: '+',
+    prefix: '!',
     commandEditing: true,
     typing: true,
     readyMessage: (client) => `Successfully initialized. Ready to serve ${client.guilds.size} guilds.`
