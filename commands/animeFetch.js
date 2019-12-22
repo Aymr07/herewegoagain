@@ -9,7 +9,7 @@ module.exports = class extends Command {
             runIn: ['text', 'dm'],
             cooldown: 0,
             aliases: ['anime', 'search'],
-            description: 'Get\'em anime rn boii,
+            description: 'Get\'em anime rn boii',
             quotedStringSupport: false,
             usage: '',
             usageDelim: undefined,
