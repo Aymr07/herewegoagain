@@ -17,7 +17,7 @@ module.exports = class extends Command {
         });
     }
 
-    async run(msg, [...params]) {
+    async run(msg) {
         console.log("working!?");
         var response = await this.client.funcs.animeFetch("anime", "one-punch man", 1, 1);
         console.log(response.Page.media[0].title);
