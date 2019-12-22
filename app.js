@@ -2,6 +2,7 @@ const {
     Client
 } = require('klasa');
 const config = require("./config.json");
+Client.use(require("@kcp/functions"));
 
 new Client({
     fetchAllMembers: false,
