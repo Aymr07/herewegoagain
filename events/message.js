@@ -12,7 +12,7 @@ module.exports = class extends Event {
     }
 
     run(msg) {
-        console.log(msg.content)
+        console.log(msg.author.username, "sent this :", msg.content)
     }
 
     async init() {

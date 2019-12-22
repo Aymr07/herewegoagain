@@ -6,7 +6,7 @@ Client.use(require("@kcp/functions"));
 
 new Client({
     fetchAllMembers: false,
-    prefix: '!',
+    prefix: '-',
     commandEditing: true,
     typing: true,
     aliasFunctions: {
