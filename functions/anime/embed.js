@@ -19,9 +19,11 @@ module.exports = class extends Function {
         console.log(data.Page.media.length)
         for (let i = 0; i < media.length; i++) {
 
+            console.log(media[i])
+
             display.addPage(
                 new MessageEmbed()
-                .setTitle(await media[i].title.english)
+                .setTitle(await media[i].title.romaji)
                 .setColor(await media[i].coverImage.color)
                 .addField('Description', await media[i].description.replace(/<[^>]*>/g, '')) // Long ass piece of shit...
                 .setImage(await media[i].coverImage.large)
