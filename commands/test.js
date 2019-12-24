@@ -1,17 +1,22 @@
-const { Command } = require('klasa');
+const { Command, RichDisplay } = require('klasa');
+const { MessageEmbed } = require('discord.js');
+
+const images = [
+    'https://i.imgur.com/gh3vYgj.jpg',
+    'https://i.imgur.com/vBV81m4.jpg',
+    'https://i.imgur.com/92hAsqe.jpg'
+];
 
 module.exports = class extends Command {
 
-    constructor(...args) {
-        super(...args, {
-            description: 'Get the name of an searchTerm.',
-            usage: '<searchTerm:args>'
-        });
-    }
+    async run(message) {
+        
 
-    run(msg, [searchTerm]) {
-        console.log(typeof searchTerm)
-        return msg.send(`The name of the searchTerm ${searchTerm} is`);
+        for (let i = 0; i < images.length; i++) {
+            display.addPage(template => template.setImage(images[i]));
+        }
+
+        return display.run();
     }
 
 };

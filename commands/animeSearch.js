@@ -1,4 +1,7 @@
-const { Command } = require('klasa');
+const {
+    Command
+} = require('klasa');
+
 
 module.exports = class extends Command {
 
@@ -17,11 +20,16 @@ module.exports = class extends Command {
         });
     }
 
+
+
     async run(msg, [searchTerm]) {
         console.log("working!?");
-        var response = await this.client.funcs.animeFetch("anime", searchTerm, 1, 1);
-        console.log(response.Page.media[0].title);
-        msg.send(JSON.stringify(response.Page.media[0].title));
+        var response = await this.client.funcs.animeFetch("anime", searchTerm, 1, 5);
+        
+        const display = await this.client.funcs.embed(msg, response)
+        display.run(await msg.send("Loading..."))
+        // console.log(response.Page.media[0]);
+
     }
 
 };
