@@ -21,8 +21,6 @@ module.exports = class extends Command {
     }
 
     async run(msg, [searchTerm]) {
-        console.log("working!?");
-
         // Searches 5 most relevant results now. Whether the user can choose to alter it idk
         var response = await this.client.funcs.animeFetch("anime", searchTerm, 1, 5);
 

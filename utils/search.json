@@ -1,5 +1,5 @@
 {
-    "anime": "media (id: $id, type: ANIME, search: $search) { id idMal format title { romaji english native userPreferred } description episodes duration genres averageScore status coverImage { medium large color } startDate { year month day } endDate { year month day } relations { edges { node { status title { romaji english userPreferred } format } } } characters (sort: ROLE) { nodes { name { first last alternative } } } }",
+    "anime": "media (id: $id, type: ANIME, search: $search) { id idMal format nextAiringEpisode { episode airingAt timeUntilAiring } title { romaji english native userPreferred } description episodes duration genres averageScore status coverImage { medium large color } startDate { year month day } endDate { year month day } relations { edges { node { status title { romaji english userPreferred } format } } } characters (sort: ROLE) { nodes { name { first last alternative } } } }",
     "char": "characters (id: $id, search: $search, sort: SEARCH_MATCH) { id name { first last native alternative } image { large medium } description siteUrl media(type: ANIME, sort: FORMAT) { edges { id node { title { romaji english native } status format siteUrl coverImage { large medium } } voiceActors(sort:LANGUAGE) { id name { first last native } language } } } }"
 
 }
