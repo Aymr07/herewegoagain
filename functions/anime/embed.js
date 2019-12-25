@@ -12,22 +12,37 @@ const {
 
 module.exports = class extends Function {
 
-    async run(msg, data) {
+    async run(data) {
 
         var media = await data.Page.media;
         const display = new RichDisplay(new MessageEmbed())
-        console.log(data.Page.media.length)
+
+        // Adds 5 pages to the RichDisplay with the necessary information
         for (let i = 0; i < media.length; i++) {
 
-            console.log(media[i])
+            // If the anime does not have any episodes yet (in this case it is most likely unaired yet)
+            if (!media[i].episodes) {
+                var episodes = "TBA"
+            } else {
+                episodes = media[i].episodes
+            }
+
+            // Removes some of the html tags in the description
+            let desc = await media[i].description.replace(/<[^>]*>/g, '')
+
+            // Since embeds can only accept up to 1024 characters. Some animes have long ass descriptions
+            if (desc.length > 1024) {
+                desc = desc.slice(0, 1020) + "..."
+            }
 
             display.addPage(
                 new MessageEmbed()
                 .setTitle(await media[i].title.romaji)
                 .setColor(await media[i].coverImage.color)
-                .addField('Description', await media[i].description.replace(/<[^>]*>/g, '')) // Long ass piece of shit...
+                .addField('Description', await desc) // Long ass piece of shit...
                 .setImage(await media[i].coverImage.large)
-                .addField("Episodes", await media[i].episodes)
+                .addField("Episodes", episodes, true)
+                .addField("Score", await media[i].averageScore, true)
             )
 
         }

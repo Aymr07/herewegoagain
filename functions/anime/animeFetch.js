@@ -75,9 +75,11 @@ module.exports = class extends Function {
 
         // performing fetch with POST request
         var response = await fetch("https://graphql.anilist.co", options);
+        console.log(response)
 
         // json body of the response
         var json = await response.json();
+        console.log(json)
 
         // checks for error in response body
         if (json.data === null) {
