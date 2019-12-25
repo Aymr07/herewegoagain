@@ -28,7 +28,12 @@ module.exports = class extends Command {
 
         // Retrieves the display RichDisplay from embed.js
         const display = await this.client.funcs.embed(response)
-        display.run(await msg.send("Loading..."))
+        display.run(await msg.send("Loading..."), {
+            time: false,
+            jump: false,
+            stop: false,
+            firstLast: false
+        })
 
     }
 

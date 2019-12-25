@@ -28,7 +28,7 @@ module.exports = class extends Function {
             }
 
             // Removes some of the html tags in the description
-            let desc = await media[i].description.replace(/<[^>]*>/g, '')
+            let desc = media[i].description.replace(/<[^>]*>/g, '')
 
             // Since embeds can only accept up to 1024 characters. Some animes have long ass descriptions
             if (desc.length > 1024) {
@@ -37,12 +37,12 @@ module.exports = class extends Function {
 
             display.addPage(
                 new MessageEmbed()
-                .setTitle(await media[i].title.romaji)
-                .setColor(await media[i].coverImage.color)
-                .addField('Description', await desc) // Long ass piece of shit...
-                .setImage(await media[i].coverImage.large)
+                .setTitle(media[i].title.romaji)
+                .setColor(media[i].coverImage.color)
+                .addField('Description', desc) // Long ass piece of shit...
+                .setImage(media[i].coverImage.large)
                 .addField("Episodes", episodes, true)
-                .addField("Score", await media[i].averageScore, true)
+                .addField("Score", media[i].averageScore, true)
             )
 
         }
