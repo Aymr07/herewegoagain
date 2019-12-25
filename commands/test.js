@@ -11,12 +11,16 @@ module.exports = class extends Command {
 
     async run(message) {
         
-
-        for (let i = 0; i < images.length; i++) {
-            display.addPage(template => template.setImage(images[i]));
-        }
-
-        return display.run();
+        this.client.schedule.create('test', Date.now() + (1), {
+            data: {
+                // This is the metadata. In one minute after the creation of this scheduled
+                // task, Schedule will call your new task with this object.
+                user: message.author.id,
+                text: 'This is a reminder',
+                channel: message.channel.id
+            },
+            catchUp: true
+            // This task will try to run again (catch up) if the bot was off when it was meant to fire
+        });
     }
-
 };

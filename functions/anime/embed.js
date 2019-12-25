@@ -7,7 +7,7 @@ const {
 const {
     MessageEmbed
 } = require('discord.js');
-const moment = require('moment')
+// const moment = require('moment')
 
 /* Takes the response returned from the animeFetch and creates a RichDisplay out of it*/
 
