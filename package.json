@@ -7,7 +7,8 @@
     "@kcp/functions": "^1.0.0",
     "discord.js": "github:discordjs/discord.js",
     "klasa": "github:dirigeants/klasa#master",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "tiny-timer": "^1.4.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0"
