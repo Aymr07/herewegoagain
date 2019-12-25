@@ -6,6 +6,8 @@ const images = [
     'https://i.imgur.com/92hAsqe.jpg'
 ];
 
+//
+
 module.exports = class extends Command {
 
     async run(message) {
