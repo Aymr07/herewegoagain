@@ -25,6 +25,10 @@ module.exports = class extends Command {
 
         var response = await this.client.funcs.animeFetch("anime", searchTerm, 1, 5);
 
+
+        // Writes the shit to JSON format
+        await this.client.funcs.storeDates(response.Page.media)
+
         // Retrieves the display RichDisplay from embed.js
         var display = await this.client.funcs.embed(response)
         display.run(await msg.send("Loading..."), {
