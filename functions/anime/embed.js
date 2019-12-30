@@ -57,11 +57,8 @@ module.exports = class extends Function {
                     // Removes some of the html tags in the description
                     desc = desc.replace(/<[^>]*>/g, '')
 
-                    console.log(desc)
-
                     // Cuts the desc to have less than 500 length
                     if (desc.length > 500) {
-                        console.log("Split the shit")
                         desc = await desc.substring(0,500) + " ...";
                     }
                 } else {
