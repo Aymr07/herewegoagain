@@ -32,6 +32,8 @@ module.exports = class extends Command {
             jump: false,
             stop: false,
             firstLast: false
+        }).then(m => {
+            this.client.funcs.animeBell(msg.channel, m.message, msg.author)
         })
     }
 
