@@ -4,6 +4,8 @@ const {
     Function
 } = require("@kcp/functions");
 const fs = require('fs');
+
+
 module.exports = class extends Function {
 
     async run(data) {
@@ -31,7 +33,7 @@ module.exports = class extends Function {
 
         // Perform magic and write it to the JSON. Btw this is my first time writing to a JSON uwu!
             let a = JSON.stringify(dates);
-            fs.writeFileSync('/Users/Yousuf/Documents/herewegoagain/utils/animeSearchData.json', a);
+            fs.writeFileSync('utils/animeSearchData.json', a);
     }
 
 }
