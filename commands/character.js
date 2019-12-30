@@ -21,18 +21,19 @@ module.exports = class extends Command {
 
     async run(msg, [searchTerm]) {
 
-
-
-
         var response = await this.client.funcs.animeFetch("character", searchTerm, 1, 5);
+
+        
 
         // Retrieves the display RichDisplay from embed.js
 
-        console.log(await response.Page.characters[0])
-
-
-
-
+        var display = await this.client.funcs.embedChara(response)
+        display.run(await msg.send("Loading..."), {
+            time: false,
+            jump: false,
+            stop: false,
+            firstLast: false
+        })
 
     }
 
