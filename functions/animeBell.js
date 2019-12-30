@@ -1,6 +1,7 @@
 const {
     Function
 } = require("@kcp/functions");
+const fs = require('fs');
 
 
 module.exports = class extends Function {
@@ -15,41 +16,55 @@ module.exports = class extends Function {
         message.react('🔔'); //reacts with the bell emote
 
         // filter for reactions as well as handling it when done
-        const filter = (reaction, usr) => reaction.emoji.name === '🔔' && usr.id === user.id; 
+        const filter = (reaction, usr) => reaction.emoji.name === '🔔' && usr.id === user.id;
         message.awaitReactions(filter, {
                 time: 60000,
                 max: 1,
             })
             .then(collected => {
-                // console.log(collected.map(x => {return x.users}))
-                // console.log(message.embeds)
 
-              
-                
                 // here's where the handling should be done
                 if (collected.size > 0) {
 
-                    
+                    // Reads the previously written JSON file
 
+                    let rawdata = fs.readFileSync('utils/animeSearchData.json');
+                    let student = JSON.parse(rawdata);
 
+                    // Converts the Epoch date format into a Cron format to be used in the reminders.
 
-                    message.send(`${user} you have turned on notifications for ${message.embeds[0].title}`)
-                    message.reactions.removeAll()
+                    var airingDate = student[message.embeds[0].title];
+                    if (airingDate === 0) {
 
-                    this.client.schedule.create('reminders', '* * * * *', {
-                        data: {
-                            // This is the metadata. In one minute after the creation of this scheduled
-                            // task, Schedule will call your new task with this object.
-                            user: user,
-                            text: `${message.embeds[0].title}`,
-                            channel: channel
-                        },
-                        catchUp: true
-                        // This task will try to run again (catch up) if the bot was off when it was meant to fire
-                    });
+                        message.send("This anime has no future episodes.")
+
+                    }
+                     else {
+                        var alert = new Date(airingDate * 1000);
+                        console.log(alert)
+                        var cronThingy = alert.getUTCMinutes() + ' ' + alert.getUTCHours() + ' *' + ' * ' + alert.getUTCDay()
+                        console.log(cronThingy);
+
+                        // Notifies the user about the notifications, removes all reactions as well.
+
+                        message.send(`${user} you have turned on notifications for ${message.embeds[0].title}`)
+                        message.reactions.removeAll()
+
+                        // Creates the reminder with the previously created Cron time format.
+
+                        this.client.schedule.create('reminders', cronThingy, {
+                            data: {
+                                user: user,
+                                text: `${message.embeds[0].title}`,
+                                channel: message.channel
+                            },
+                            catchUp: true
+                        });
+                    }
                 }
-                
+
             })
             .catch(console.error);
+
     }
 }

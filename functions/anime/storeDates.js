@@ -18,7 +18,8 @@ module.exports = class extends Function {
             var title = data[index].title.romaji;
             var date = data[index].nextAiringEpisode;
 
-            // If the anime is finished, then date will be null (There is no nextAiringEpisode). Set it to a default value of 0.
+            // If the anime is already finished, then date will be null (There is no nextAiringEpisode duh). Set it to a default value of 0.
+
             if (!date) {
                 date = 0
             } else {
@@ -27,7 +28,6 @@ module.exports = class extends Function {
            
             dates[title] = date
 
-            
         }
 
 
