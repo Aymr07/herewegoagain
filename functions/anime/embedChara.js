@@ -8,7 +8,6 @@ const {
     MessageEmbed
 } = require('discord.js');
 // const moment = require('moment')
-
 /* Takes the response returned from the animeFetch and creates a RichDisplay out of it*/
 
 module.exports = class extends Function {
@@ -17,7 +16,6 @@ module.exports = class extends Function {
 
         var characters = await data.Page.characters;
         const display = new RichDisplay(new MessageEmbed())
-        console.log(characters)
 
         // Adds 5 pages to the RichDisplay with the necessary information
         for (let i = 0; i < characters.length; i++) {
@@ -35,23 +33,15 @@ module.exports = class extends Function {
                 // Removes some of the html tags in the description
                 desc = desc.replace(/<[^>]*>/g, '')
 
-                console.log(desc)
 
                 // Cuts the desc to have less than 500 length
                 if (desc.length > 500) {
-                    console.log("Split the shit")
+
                     desc = await desc.substring(0, 500) + " ...";
                 }
             } else {
                 desc = "N/A"
             }
-
-            if (desc.length > 500) {
-                console.log("Split the shit")
-                desc = await desc.substring(0, 500) + " ...";
-            }
-
-
 
             display.addPage(
                 new MessageEmbed()
@@ -61,7 +51,6 @@ module.exports = class extends Function {
                 .setImage(anime.image.large)
 
             );
-
 
         }
 
