@@ -21,7 +21,7 @@ module.exports = class extends Function {
         // Adds 5 pages to the RichDisplay with the necessary information
         for (let i = 0; i < media.length; i++) {
 
-            var anime = media[i];
+            var anime = await media[i];
 
             if (anime.format == "TV" || anime.format == "OVA" || anime.format == "MOVIE") {
 
@@ -50,16 +50,19 @@ module.exports = class extends Function {
                 var desc;
                 if (anime.description) {
                     // description formating cos it sucks
-                    desc = anime.description.split("<br>\n<br>").join("\n");
+                    desc = await anime.description.split("<br>\n<br>").join("\n");
                     desc = desc.split("<br><br>").join("\n");
                     desc = desc.split("<br>").join("\n");
 
                     // Removes some of the html tags in the description
                     desc = desc.replace(/<[^>]*>/g, '')
 
+                    console.log(desc)
+
                     // Cuts the desc to have less than 500 length
                     if (desc.length > 500) {
-                        desc = desc.split(" ", 500).join(" ") + "...";
+                        console.log("Split the shit")
+                        desc = await desc.substring(0,500) + " ...";
                     }
                 } else {
                     desc = "N/A"
