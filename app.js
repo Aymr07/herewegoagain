@@ -11,6 +11,7 @@ mystr += mykey.final('utf8');
 mystr = mystr.replace("\"", "")
 mystr = mystr.replace("\"", "")
 
+
 console.log(mystr); //abc
 
 new Client({
