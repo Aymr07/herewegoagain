@@ -32,7 +32,7 @@ module.exports = class extends Function {
                 qType = search["anime"];
                 break;
             case "character":
-                qType = search["character"];
+                qType = search["char"];
                 break;
             default:
                 throw new Error("Type not supported.");
@@ -75,12 +75,10 @@ module.exports = class extends Function {
 
         // performing fetch with POST request
         var response = await fetch("https://graphql.anilist.co", options);
-        console.log(response)
 
         // json body of the response
         var json = await response.json();
-        console.log(json)
-
+        
         // checks for error in response body
         if (json.data === null) {
             if (json.errors[0].status === 404) {
